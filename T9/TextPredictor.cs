@@ -22,12 +22,13 @@ namespace T9
         public IEnumerable<string> GetLetterCombinations(string digits)
         {
             var intDigits = digits
-                .Select(d => int.Parse(d.ToString()));
+                .Select(d => int.Parse(d.ToString()))
+                .ToList();
 
             return GetLetterCombinations(intDigits);
         }
 
-        private IEnumerable<string> GetLetterCombinations(IEnumerable<int> digits)
+        private IEnumerable<string> GetLetterCombinations(IList<int> digits)
         {
             return digits.Skip(1)
                 .Aggregate(GetCombos(digits.First()), (accum, digit) =>
